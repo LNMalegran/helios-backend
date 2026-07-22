@@ -14,19 +14,6 @@ from routers import auth, character, inventory, poi, ws as ws_router, constellat
 # Создаём таблицы при старте
 models.Base.metadata.create_all(bind=engine)
 
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000", 
-        "http://127.0.0.1:3000",
-        "https://gelios-tau.vercel.app",  # ← ДОБАВЬ ПОСЛЕ ДЕПЛОЯ
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Инициализация БД и фоновых задач при старте."""
@@ -137,7 +124,7 @@ app = FastAPI(lifespan=lifespan, title="Гелиос - Командное Ядр
 # === CORS ===
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "https://gelios-tau.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
