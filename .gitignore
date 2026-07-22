@@ -1,0 +1,7 @@
+# .gitignore (корень бэкенда)
+.env
+__pycache__/
+*.pyc
+game.db
+.venv/
+venv/
